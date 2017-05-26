@@ -55,3 +55,9 @@ Paging
 Paging is fairly simple if you want to get all of a top-level object that's available. You just get the `endCursor` in one query, then use that in the `after` in the next query.
 
 However, if you want to get all of a top-level object and all of the things in a collection within those objects, it doesn't like it's possible to do conveniently right now. I think you have to first page through all of the top level objects then save an identifier for each that'll let you get the subobject collection in a future series of queries which page through that collection.
+
+e.g. with the GitHub API, if you want all of the repositories for a user and all of the commits in all of the repositories, you first need to do a series of requests that page through all of the repositories and save the default branch ref associated with each repository, then go back and do another series of requests for each repository which page through all of the commits for each branch ref that you saved.
+
+If a user has 300 repos and you can get 100 in a page, that's 3 requests for the repos. Then, for each repo (300 times), you need to do 1+ request to get all the commits.
+
+Unless! You can do some massive `OR` query that gets commit history for commits that match one of 300 different branch refs.
