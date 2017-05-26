@@ -9,6 +9,39 @@ GraphQL
   - Does not seem great for syncing from a client copy of a store to a server copy.
 - [You can run it on an Express server.](http://graphql.org/graphql-js/running-an-express-graphql-server/)
 - GitHub API v4 uses it.
+- You can define named queries like this:
+
+      query getNextPageOfCommits($repoName: String!, $lastCursor: String) {
+        viewer {
+          repository(name: $repoName) {
+            defaultBranchRef {
+              id
+              repository {
+                name
+              }
+              target {
+                ... on Commit {
+                  id
+                  history(first: 100, after: $lastCursor) {
+                    pageInfo {
+                      hasNextPage
+                      endCursor
+                    }
+                    edges {
+                      node {
+                        message
+                        committedDate
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    
+   But how do you call that more than once in a single request?
 
 GitHub API
 ----
@@ -65,3 +98,42 @@ e.g. with the GitHub API, if you want all of the repositories for a user and all
 If a user has 300 repos and you can get 100 in a page, that's 3 requests for the repos. Then, for each repo (300 times), you need to do 1+ request to get all the commits.
 
 Unless! You can do some massive `OR` query that gets commit history for commits that match one of 300 different branch refs.
+
+Looks like you cannot do `OR` in query arguments, but you can do multiple queries in a single request. So, after you save all of the repository names, you can build a query like this that has all of the repository names in it:
+
+    {
+      viewer {
+        a1: repository(name: "godtributes") {
+          ...commitFields
+        }
+        a2: repository(name: "off-brand-vine") {
+          ...commitFields
+        }
+      }
+    }
+
+    fragment commitFields on Repository {
+      defaultBranchRef {
+        id
+        repository {
+          name
+        }
+        target {
+          ... on Commit {
+            id
+            history(first: 100) {
+              pageInfo {
+                hasNextPage
+                endCursor
+              }
+              edges {
+                node {
+                  message
+                  committedDate
+                }
+              }
+            }
+          }
+        }
+      }
+    }
