@@ -104,36 +104,53 @@ Looks like you cannot do `OR` in query arguments, but you can do multiple querie
     {
       viewer {
         a1: repository(name: "godtributes") {
-          ...commitFields
-        }
-        a2: repository(name: "off-brand-vine") {
-          ...commitFields
-        }
-      }
-    }
-
-    fragment commitFields on Repository {
-      defaultBranchRef {
-        id
-        repository {
-          name
-        }
-        target {
-          ... on Commit {
+          defaultBranchRef {
             id
-            history(first: 100) {
-              pageInfo {
-                hasNextPage
-                endCursor
-              }
-              edges {
-                node {
-                  message
-                  committedDate
+            repository {
+              name
+            }
+            target {
+              ... on Commit {
+                id
+                history(first: 100, after: "1bf4c7a1eef4b594404aa831d477e28a24ed7ea1 399") {
+                  ...CommitHistoryFields
                 }
               }
             }
           }
         }
+        a2: repository(name: "off-brand-vine") {
+          defaultBranchRef {
+            id
+            repository {
+              name
+            }
+            target {
+              ... on Commit {
+                id
+                history(first: 100) {
+                  ...CommitHistoryFields
+                }
+              }
+            }
+          }
+        }    
       }
     }
+
+    fragment CommitHistoryFields on CommitHistoryConnection {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      edges {
+        node {
+          message
+          committedDate
+        }
+      }
+    }
+
+And you would build and run those until you had no more next pages.
+
+Would be nice if more of it could be DRYed up, but right now [fragments cannot be parameterized](https://github.com/facebook/graphql/issues/204).
