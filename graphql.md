@@ -20,6 +20,8 @@ GitHub API
         repositories(first: 100, after: "Y3Vyc29yOjg0NDUzNDg2") {
           nodes {
             name
+            id
+            description
           },
           pageInfo {
             endCursor
@@ -38,6 +40,8 @@ Then, while `hasNextPage` is true:
         repositories(first: 100, after: "<endCursor from previous query>") {
           nodes {
             name
+            id
+            description
           },
           pageInfo {
             endCursor
