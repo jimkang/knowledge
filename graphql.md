@@ -48,3 +48,10 @@ Then, while `hasNextPage` is true:
         }
       }
     }
+
+Paging
+-----
+
+Paging is fairly simple if you want to get all of a top-level object that's available. You just get the `endCursor` in one query, then use that in the `after` in the next query.
+
+However, if you want to get all of a top-level object and all of the things in a collection within those objects, it doesn't like it's possible to do conveniently right now. I think you have to first page through all of the top level objects then save an identifier for each that'll let you get the subobject collection in a future series of queries which page through that collection.
