@@ -154,3 +154,30 @@ Looks like you cannot do `OR` in query arguments, but you can do multiple querie
 And you would build and run those until you had no more next pages.
 
 Would be nice if more of it could be DRYed up, but right now [fragments cannot be parameterized](https://github.com/facebook/graphql/issues/204).
+
+Turns out a query like the one above (with 300 repos) both asks for too many things at a time for the API and also exceeds the complexity ratings. Even if you cut it down to 50 at a time, you get an error like:
+
+    body {
+      "data": null,
+      "errors": [
+        {
+          "message": "The history field and its children is requesting up to 490,000 possible nodes which exceeds the maximum limit of 11,250.",
+          "locations": [
+            {
+              "line": 12,
+              "column": 13
+            }
+          ]
+        },
+        {
+          "message": "Query has complexity of 751, which exceeds max complexity of 215"
+        }
+      ]
+    }
+
+This happens for 17 repos out of 300+. It's probably because those repos have complex histories involving multiple parents.
+
+If you reduce the number of commits to get via `history` to 20, you no longer get the too-many-nodes complaint. 
+
+??: Does the number of queries in one request somehow affect the complexity rating?
+
