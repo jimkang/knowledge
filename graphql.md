@@ -197,4 +197,6 @@ The number of queries in a single request *does* change the API's complexity rat
           "message": "Query has complexity of 801, which exceeds max complexity of 215"
         }
       ]
-}
+    }
+
+Why, I do not know.
