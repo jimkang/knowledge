@@ -179,5 +179,22 @@ This happens for 17 repos out of 300+. It's probably because those repos have co
 
 If you reduce the number of commits to get via `history` to 20, you no longer get the too-many-nodes complaint. 
 
-??: Does the number of queries in one request somehow affect the complexity rating?
+The number of queries in a single request *does* change the API's complexity rating for your request. A request like the one above with 10 queries in it will run, where as one with 50 in it will yield a response with some of these (7, in my case):
 
+    body {
+      "data": null,
+      "errors": [
+        {
+          "message": "The history field and its children is requesting up to 19,600 possible nodes which exceeds the maximum limit of 11,250.",
+          "locations": [
+            {
+              "line": 12,
+              "column": 13
+            }
+          ]
+        },
+        {
+          "message": "Query has complexity of 801, which exceeds max complexity of 215"
+        }
+      ]
+}
