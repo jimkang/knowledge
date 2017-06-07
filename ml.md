@@ -19,3 +19,13 @@ Perceptron:
 
 - Training data is our sample we use to make inferences about the whole population.
   - Don't double-count the training data.
+
+Markov assumption to reduce computational complexity:
+
+P(D|A,B,C) ~= P(D|C)
+(or ~= P(D|B,C) if you want to use two in the chain - 2-Markov assumption)
+
+- Right of | is the condition.
+- Left of | is what will happen
+- P(D|A,B,C) means probabilty D will happen after you observe A then B then C.
+
