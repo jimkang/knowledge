@@ -29,3 +29,15 @@ P(D|A,B,C) ~= P(D|C)
 - Left of | is what will happen
 - P(D|A,B,C) means probabilty D will happen after you observe A then B then C.
 
+P(Context|Word)
+
+- To capture context, use something more dense than one-hot; high-dimensional vector of floats.
+- Skip-Gram
+  - Tries to predict how likely n terms are to appear before a term and how likely n terms are to appear after a term.
+  - Uses nearest neighbors for this.
+    - Dot product can be negative. So, take the exponent of it.
+    - Then, normalize by dividing the above by the sum of all possible outcomes in that same context.
+      - This is huge, unfortunately. Hence, there's some performance hack that takes care of that.
+    - word2vec has **two** vectors for each word: Input vector and context vector.
+      - Input word matrix, context word matrix.
+ 
