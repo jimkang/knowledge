@@ -41,3 +41,7 @@ P(Context|Word)
     - word2vec has **two** vectors for each word: Input vector and context vector.
       - Input word matrix, context word matrix.
  
+Convolutions:
+
+- Summarize a subset of 2D area multiple times?
+- Subset of a locally-connected layer which is a subset of a dense layer
