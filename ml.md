@@ -45,3 +45,4 @@ Convolutions:
 
 - Summarize a subset of 2D area multiple times?
 - Subset of a locally-connected layer which is a subset of a dense layer
+- Start with convolutional networks instead of recurrent ones because they're easier to understand.
