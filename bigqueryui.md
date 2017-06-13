@@ -16,5 +16,24 @@ BigQuery UI
   ```
     Where `q` seems to correspond to `clientY`.
 
-  var queryDragger = document.getElementById('query-dragger');
-  queryDragger.dispatchEvent(new MouseEvent('mousedown', {screenX: 500, screenY: 2000, clientX: 500, clientY: 1900}))
+```
+var x = 500;
+var startY = 300;
+var endY = 4000;
+var startEvent = {screenX: x, screenY: startY, clientX: x, clientY: startY, pageX: x, pageY: startY};
+var endEvent = {screenX: x, screenY: endY, clientX: x, clientY: endY, pageX: x, pageY: endY};
+var queryDragger = document.getElementById('query-dragger');
+
+
+function sendMouseMove() {
+  queryDragger.dispatchEvent(new MouseEvent('mousemove', endEvent));
+  setTimeout(sendMouseUp, 200);
+}
+
+function sendMouseUp() {
+  queryDragger.dispatchEvent(new MouseEvent('mouseup', endEvent));
+}
+
+queryDragger.dispatchEvent(new MouseEvent('mousedown', startEvent)); 
+setTimeout(sendMouseMove, 200);
+```
