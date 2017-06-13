@@ -16,6 +16,8 @@ BigQuery UI
   ```
     Where `q` seems to correspond to `clientY`.
 
+  - This isn't able to trigger a digest:
+
 ```
 var x = 500;
 var startY = 300;
@@ -36,4 +38,17 @@ function sendMouseUp() {
 
 queryDragger.dispatchEvent(new MouseEvent('mousedown', startEvent)); 
 setTimeout(sendMouseMove, 200);
+```
+
+  - In this minified code, `h.record` contains actual row data:
+```
+                function d(d, e, f, g, h) {
+                    d || (d = a.$new(!1, h),
+                    d.$$transcluded = !0);
+                    return b(d, e, {
+                        parentBoundTranscludeFn: c,
+                        transcludeControllers: f,
+                        futureParentElement: g
+                    })
+                }
 ```
