@@ -6,5 +6,15 @@ BigQuery UI
   - The `MouseEvent` is the first param passed to it. It has a `type` of `mousedown`, `mousemove`, or `mouseup` and `screenX`, `screenY`, `clientX`, and `clientY` coordinates. Row adding/deleting seem to happen as a result of all three types.
   - How does it decide what to add?
     - There's a variable that has a `last` property in `$digest` that changes. How is that determined?
+    - The `MouseEvent` `pageX` and `pageY` are used in a call to some `resize` function.
+ ```
+  function l(a) {
+    c.resize(h.resizeName, a.pageX - n, a.pageY - q);
+    e || (d.$applyAsync(f.bind(g, this)),
+    e = !0)
+  }
+  ```
+    Where `q` seems to correspond to `clientY`.
+
   var queryDragger = document.getElementById('query-dragger');
   queryDragger.dispatchEvent(new MouseEvent('mousedown', {screenX: 500, screenY: 2000, clientX: 500, clientY: 1900}))
