@@ -6,7 +6,7 @@ Canvas
   - The third is the radius.
   - The fourth and fifth are the starting and ending *angles* of the arc, in radians.
   - The sixth is a flag that means go counterclockwise if true, clockwise otherwise.
- - Here's how you draw a circle with it:
+  - Here's how you draw a circle with it:
  
         ctx.beginPath();
         ctx.moveTo(starPoint.x, starPoint.y - starRadius);
