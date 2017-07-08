@@ -1,4 +1,4 @@
-GraphQL
+GraphQL and the GitHub API
 ------
 
 - Built around hierarchical queries.
@@ -200,3 +200,5 @@ The number of queries in a single request *does* change the API's complexity rat
     }
 
 Why, I do not know.
+
+[On calculating query complexity](https://developer.github.com/v4/guides/resource-limitations/)
