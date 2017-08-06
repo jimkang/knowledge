@@ -202,3 +202,5 @@ The number of queries in a single request *does* change the API's complexity rat
 Why, I do not know.
 
 [On calculating query complexity](https://developer.github.com/v4/guides/resource-limitations/)
+
+- A user cannot see another user's commits, even if the repos are public, unless they have access to that repo. For example, `masschildcaredata` cannot see `jimkang`'s commits in `observatory`, but it can see `jimkang`'s commits in `masschildcaredata.github.io`. Oddly enough, `jimkang` seems to be able to see `mbostock`'s commits in `d3-queue`, probably because I made a PR to that repo.
