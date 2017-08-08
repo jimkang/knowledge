@@ -14,3 +14,18 @@ Requirements for applicability:
 Interpreting results:
 
 - A p-value <= 0.05 is commonly interpreted as justification for rejecting the null hypothesis. But 0.05 is just a probability. There is nothing magic about 0.05.
+
+Here's how to do it in R:
+
+    > library(MASS)
+    > 
+    > dat <- matrix(c(<16 numbers (counts) go here>), ncol=4, byrow=T)
+    > colnames(dat) <- c("1","2","3","4")
+    > rownames(dat) <- c("A","B","C","D")
+    > tb <- as.table(dat)
+    > chisq.test(tb)
+
+      Pearson's Chi-squared test
+
+    data:  tb
+    X-squared = 7.6493, df = 9, p-value = 0.5698
