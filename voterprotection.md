@@ -28,3 +28,4 @@ NAACP LDF
 
 - [Election day legal support](http://www.naacpldf.org/case-issue/prepared-vote)
 - Formerly (still?) lawsuits enforcing the Voting Rights Act, which was curtailed in 2013.
+- [Reregistration efforts](http://www.naacpldf.org/reclaim-your-vote)
