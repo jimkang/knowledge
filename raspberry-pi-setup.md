@@ -47,4 +47,4 @@ External USB hard drive
 TODO:
 
 - Assigned IP
-
+- Making a low-privilege account.
