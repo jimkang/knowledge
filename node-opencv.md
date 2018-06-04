@@ -12,8 +12,9 @@ Unforunately, you get this at runtime:
 
 - Wait, that's just because there was no file at the path given to OpenCV. Brutal. Works if the file path is valid.
 
-Python opencv 3
----
+Python opencv 3 setup
+===
 
 - Install with `brew install opencv@3`.
 - [Upgrade pip so it can install stuff](https://stackoverflow.com/questions/49748063/pip-install-fails-for-every-package-could-not-find-a-version-that-satisfies)
+- `echo /usr/local/opt/opencv@3/lib/python2.7/site-packages >> venv/lib/python2.7/site-packages/opencv3.pth` to [make OpenCV available to virtualenv](https://gravityjack.com/news/opencv-python-3-homebrew/).
