@@ -15,4 +15,5 @@ Unforunately, you get this at runtime:
 Python opencv 3
 ---
 
-Install with `brew install opencv@3`.
+- Install with `brew install opencv@3`.
+- [Upgrade pip so it can install stuff](https://stackoverflow.com/questions/49748063/pip-install-fails-for-every-package-could-not-find-a-version-that-satisfies)
