@@ -6,7 +6,7 @@
     - `LogFile="/var/log/nginx/access.log"
     - `SiteDomain="smidgeo.com"`
 - Edit `/etc/logrotate.d/nginx.conf` like so:
-
+```
     /var/log/nginx/*.log {
         daily # rotate daily
         missingok 
@@ -25,7 +25,7 @@
                 [ ! -f /var/run/nginx.pid ] || kill -USR1 `cat /var/run/nginx.pid`
         endscript
     }
-
+```
 - Run `/usr/share/doc/awstats/examples/awstats_updateall.pl now -awstatsprog=/usr/lib/cgi-bin/awstats.pl`
 - Build HTML with `/usr/share/awstats/tools/awstats_buildstaticpages.pl -config=awstats.conf -awstatsprog=/usr/bin/awstats -dir=/usr/share/nginx/html/smidgeo.com/<dir>`
 - Add the HTML build command to cron.
