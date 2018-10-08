@@ -27,7 +27,7 @@
     }
 
 - Run `/usr/share/doc/awstats/examples/awstats_updateall.pl now -awstatsprog=/usr/lib/cgi-bin/awstats.pl`
-- Build HTML with `/etc/awstats# /usr/share/awstats/tools/awstats_buildstaticpages.pl -config=awstats.conf -awstatsprog=/usr/bin/awstats -dir=/usr/share/nginx/html/smidgeo.com/<dir>`
+- Build HTML with `/usr/share/awstats/tools/awstats_buildstaticpages.pl -config=awstats.conf -awstatsprog=/usr/bin/awstats -dir=/usr/share/nginx/html/smidgeo.com/<dir>`
 - Add the HTML build command to cron.
 
 The above worked. Mostly based on [this](https://kamisama.me/2013/03/20/install-configure-and-protect-awstats-for-multiple-nginx-vhost-on-debian/).
