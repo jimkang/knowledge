@@ -5,7 +5,7 @@
   - After [installing php-fpm](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-in-ubuntu-16-04), these are the nginx config I clawed my way into that actually worked:
     - Move index and root directives up from location blocks up the server block
     - Add under the server block:
-        location ~ \.php$ {
+        ```location ~ \.php$ {
           # include snippets/fastcgi-php.conf;
           fastcgi_pass unix:/run/php/php7.0-fpm.sock;
           fastcgi_index index.php;
@@ -14,7 +14,7 @@
         }
       location ~ /\.ht {
           deny all;
-        }
+        }```
    - Some tutorials will have different includes and all sorts of other things under that block. Maybe they work for some environments? They didn't work for me, though.
    - Some things that happened after I initally configured php-fpm:
       - 404 for every php file
