@@ -28,3 +28,9 @@
   - [This Martin Fjordvald article was really helpful for understanding what might be going on.](https://blog.martinfjordvald.com/2011/01/no-input-file-specified-with-php-and-nginx/)
 - Then, you'll probable run into permissions errors, but the Matomo PHP page that loads on your server will tell who needs to own what.
 - Go through the wizard in the php page.
+- [*Sigh* Then, you gotta do the server log stuff](https://matomo.org/docs/log-analytics-tool-how-to/) if, like me, you feel it greatly diminishes the value of Matomo if you have to put in a Google Analytics-style JS tracker.
+  - Try: /path/to/piwik/misc/log-analytics/import_logs.py --url=https://yoursite.com/matomo --enable-bots --enable-static --enable-http-errors --enable-reverse-dns --recorders=2 /var/log/nginx/access.log
+    - Fix the permissions errors that come up.
+    - Adding the user that's going to run this to the `www-data` group will help a lot here.
+    - `url` means the URL of your Matomo instance running on PHP, not the site you're tracking.
+  
