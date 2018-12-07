@@ -1,0 +1,30 @@
+# Installing
+
+- [Instructions](https://matomo.org/docs/installation/#getting-started)
+- The great hassle here is actually getting PHP to work with nginx.
+  - After [installing php-fpm](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-in-ubuntu-16-04), these are the nginx config I clawed my way into that actually worked:
+    - Move index and root directives up from location blocks up the server block
+    - Add under the server block:
+        location ~ \.php$ {
+          # include snippets/fastcgi-php.conf;
+          fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+          fastcgi_index index.php;
+          # include /etc/nginx/fastcgi_params;
+          include /etc/nginx/fastcgi.conf;
+        }
+      location ~ /\.ht {
+          deny all;
+        }
+   - Some tutorials will have different includes and all sorts of other things under that block. Maybe they work for some environments? They didn't work for me, though.
+   - Some things that happened after I initally configured php-fpm:
+      - 404 for every php file
+        - I think this was actually caused by php-fpm not finding an include?
+      - Blank file served for every php file
+        - The php extension directive did not apply to the subdirectory under the / location. Hence, I had to move things up.
+   - Relevant things to check for debugging:
+    - `/var/log/nginx/access.log` of course
+    - `/var/log/php7.0-fpm.log`
+    - `service php-fpm status`
+  - [This Martin Fjordvald article was really helpful for understanding what might be going on.](https://blog.martinfjordvald.com/2011/01/no-input-file-specified-with-php-and-nginx/)
+- Then, you'll probable run into permissions errors, but the Matomo PHP page that loads on your server will tell who needs to own what.
+- Go through the wizard in the php page.
