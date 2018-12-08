@@ -33,4 +33,8 @@
     - Fix the permissions errors that come up.
     - Adding the user that's going to run this to the `www-data` group will help a lot here.
     - `url` means the URL of your Matomo instance running on PHP, not the site you're tracking.
+- Installing Geolocation support
+  - `wget https://geolite.maxmind.com/download/geoip/database/GeoLite2-City.tar.gz`
+  - `tar zxvf GeoLite2-City.tar.gz`
+  - `cp GeoLite2-City_20181204/GeoLite2-City.mmdb /path/to/piwik/misc/`
   
