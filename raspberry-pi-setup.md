@@ -43,6 +43,7 @@ External USB hard drive
 - Set up automatic mounting. `sudo vi /etc/fstab`. Add the line:
   - `/dev/sda1	/mnt/storage	ext4	defaults,nofail	  0	  0`
   - `nofail` is what lets the OS boot even if the HD is not plugged in.
+- [If the HD looks like it has nothing on it after a power outage](https://smidgeo.com/notes/deathmtn/deathmtn-XkxbJKNc.html)
   
 TODO:
 
