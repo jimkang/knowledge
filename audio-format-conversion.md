@@ -29,3 +29,7 @@
     ffmpeg -f concat -safe 0 -i <( for f in ${prefix}*.wav; do echo "file '$(pwd)/$f'"; done ) combined.wav
 
     lame combined.wav ${prefix}-complete.mp3
+
+# Extracting audio from a video
+
+    ffmpeg -i undefined.ogv -vn -acodec copy out.ogg
