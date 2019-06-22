@@ -49,3 +49,9 @@ TODO:
 
 - Assigned IP
 - Making a low-privilege account.
+
+Changing the wifi password
+--
+
+- Edit /etc/wpa_supplicant/wpa-supplicant.conf
+- Change the `psk` value under the `network` entry.
