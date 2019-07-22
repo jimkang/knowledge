@@ -25,3 +25,4 @@
     Jul 21 21:04:00 smallcatlabs-disruption-pod postfix/smtp[19654]: 42AE5DF3AD: to=<jimkang@fastmail.com>, relay=in1-smtp.messagingengine.com[66.111.4.72]:25, delay=1.1,delays=0.02/0.01/1.1/0.02, dsn=5.5.2, status=bounced (host in1-smtp.messagingengine.com[66.111.4.72] said: 504 5.5.2 <root@smallcatlabs-disruption-pod>: Sender address rejected: need fully-qualified address (in reply to RCPT TO command))
 
 - After using the interactive version above, sending email worked!
+- However, email sent to Gmail bounced, probably because I did not have a [reverse DNS record](https://support.google.com/mail/answer/81126#authentication) set up.
