@@ -19,6 +19,9 @@
 
 - When I just ran this without config, my email bounced.
 - I edited `/etc/postfix/main.cf` and added this line `notify_classes = resource, software, bounce, policy` then restarted postfix (`service postfix restart` as root or sudo).
-- I got this in the log (`/var/log/mail.log`) when sending a test message:
+- I then did some of [this DNS setup](https://www.c0ffee.net/blog/mail-server-guide/#overview). I only created the A record for the mail domain, the MX record to point to that mail domain, and a TXT record containing `v=spf1 mx -all`. 
+- I got this in the log (`/var/log/mail.log`) when sending a test message with a sendmail one-liner that did not set the FROM field:
 
     Jul 21 21:04:00 smallcatlabs-disruption-pod postfix/smtp[19654]: 42AE5DF3AD: to=<jimkang@fastmail.com>, relay=in1-smtp.messagingengine.com[66.111.4.72]:25, delay=1.1,delays=0.02/0.01/1.1/0.02, dsn=5.5.2, status=bounced (host in1-smtp.messagingengine.com[66.111.4.72] said: 504 5.5.2 <root@smallcatlabs-disruption-pod>: Sender address rejected: need fully-qualified address (in reply to RCPT TO command))
+
+- After using the interactive version above, sending email worked!
