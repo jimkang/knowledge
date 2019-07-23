@@ -27,3 +27,11 @@
 - After using the interactive version above, sending email worked!
 - However, email sent to Gmail bounced, probably because I did not have a [reverse DNS record](https://support.google.com/mail/answer/81126#authentication) set up.
 - After setting up a reverse DNS record (PTR) by renaming the droplet in Digital Ocean to match the hostname, email did make it Gmail, though it did get classified as spam.
+
+## Installing GNU Mailman
+
+Mailman is a mailing list manager.
+
+[This post explains really well how to set it up.](http://jhshi.me/2014/11/16/mailman-configuration-with-nginx-plus-fastcgi-plus-postfix-on-ubuntu/index.html)
+
+Disappointingly, Mailman sends people's passwords to them in plain text and has a cumbersome UI for subscribers.
