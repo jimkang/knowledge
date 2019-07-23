@@ -27,6 +27,9 @@
 - After using the interactive version above, sending email worked!
 - However, email sent to Gmail bounced, probably because I did not have a [reverse DNS record](https://support.google.com/mail/answer/81126#authentication) set up.
 - After setting up a reverse DNS record (PTR) by renaming the droplet in Digital Ocean to match the hostname, email did make it Gmail, though it did get classified as spam.
+- Incoming mail did not work until I:
+    - Ran `ufw allow 25` to make sure port 25 was open to the world. (I neglected to check whether it was closed before I ran this, so it may not have mattered in this case.)
+    - Properly included my domain in `mydestination` in `/etc/postfix/mail.cf`. Before, I had `mail.smidgeo.com`, even though the mail is actually addressed to `@smidgeo.com`.
 
 ## Installing GNU Mailman
 
@@ -35,3 +38,5 @@ Mailman is a mailing list manager.
 [This post explains really well how to set it up.](http://jhshi.me/2014/11/16/mailman-configuration-with-nginx-plus-fastcgi-plus-postfix-on-ubuntu/index.html)
 
 Disappointingly, Mailman sends people's passwords to them in plain text and has a cumbersome UI for subscribers.
+
+However, by setting the "mod" checkbox for each user, they can be disallowed from post directly to the list, which is a nice feature.
