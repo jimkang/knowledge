@@ -9,11 +9,11 @@
 - postfix is installed by default on Ubuntu.
 - [Test postfix (via the sendmail command)](http://tombuntu.com/index.php/2009/12/22/send-outgoing-email-with-postfix/) with this command:
 
-    sendmail EMAILADDRESS
-    FROM: FROMADDRESS
-    SUBJECT: hello world
-    this is a test email
-    .
+        $ sendmail EMAILADDRESS
+        FROM: FROMADDRESS
+        SUBJECT: hello world
+        this is a test email
+        .
 
 (You type each line interactively; sendmail closes when there's a single line with a `.`.)
 
