@@ -40,3 +40,11 @@ Mailman is a mailing list manager.
 Disappointingly, Mailman sends people's passwords to them in plain text and has a cumbersome UI for subscribers.
 
 However, by setting the "mod" checkbox for each user, they can be disallowed from post directly to the list, which is a nice feature.
+
+## Vacation
+
+`vacation` is a simple program for autoreplying.
+
+- Very important to have the `-r 0` switch for the vacation command in .forward if you're going to reply more than once per day.
+- `vacation -l` lists all of the emails it responded to and when.
+- Does not give you control over whether you reply to the Reply-To or From fields of an incoming message.
