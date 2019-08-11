@@ -1,5 +1,6 @@
 # Eeeeeeemail
 
+Kind of a verbose version of this document: [Setting up an automated mailing list saga](https://jimkang.com/weblog/articles/running-your-own-email-server/)
 ## Setting up the MTA
 
 (MTA is "mail transfer agent".)
