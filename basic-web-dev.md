@@ -4,7 +4,7 @@
 
 Non-SVG, non-Canvas ones that is.
 
-[Here is an example that works on both mobile and desktop browsers.](https://jsbin.com/fakuma/1/edit?html,js,console,output)
+[Here is an example that works on both mobile and desktop browsers.](https://jsbin.com/fakuma/1/)
 
 Key points:
 
