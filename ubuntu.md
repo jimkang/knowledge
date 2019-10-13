@@ -33,3 +33,12 @@ The best I can come up with is:
 Then, you can type `t` in the terminal to get a new tab.
 
 You can switch between tabs with alt+[tab number]. I don't know of a quick way to close a tab. Typing `exit` is the best I can do.
+
+## Updating packages on your servers
+
+- `apt-get update` (sudo)
+- `apt-get upgrade`
+- `ps aux | grep <pattern for processes you care agbout>`
+- Copy process list somewhere
+- `reboot`
+- Log back in and make sure old processes are still up.
