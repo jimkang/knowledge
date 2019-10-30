@@ -8,7 +8,7 @@
 - `unzip master.zip`
 - `cd s3cmd-master`
 - `apt-get install python-setuptools`
-- `python setup install` (Tested with Python 2)
+- `python setup.py install` (Tested with Python 2)
 
 ### [Setting up with Spaces](https://www.digitalocean.com/docs/spaces/resources/s3cmd/)
 
@@ -21,4 +21,5 @@
 ### 'rsync'ing up to Spaces
 
 - `s3cmd sync <path to src dir ending in slash> s3://<bucket>/<prefix>`
-  - e.g. `s3cmdn sync /
+  - You can put `--dry-run` after `sync` to get it to say what it would copy.
+  - You can use `—skip-existing` to avoid comparing existing files.
