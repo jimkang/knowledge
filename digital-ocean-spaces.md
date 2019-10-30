@@ -24,3 +24,4 @@
   - You can put `--dry-run` after `sync` to get it to say what it would copy.
   - You can use `—skip-existing` to avoid comparing existing files.
   - Use `--exclude '<dir or file pattern>'` to skip directories you don't want to upload. For directory patterns, use a trailing slash.
+  - Use `--acl-public` to make these files publicly readable via a browser.
