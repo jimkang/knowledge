@@ -33,3 +33,17 @@
 # Extracting audio from a video
 
     ffmpeg -i undefined.ogv -vn -acodec copy out.ogg
+
+# Converting mono to stereo
+
+    #!/bin/bash
+
+    dir=path/to/mono-files
+    outdir=path/to/new-stereo-files
+    for file in ${dir}/*.wav
+    do
+      filename=${file##*/}
+      outfile="${outdir}/${filename}"
+      echo "Converting to ${outfile}."
+      sox -M "${file}" "${file}" "${outfile}"
+    done
