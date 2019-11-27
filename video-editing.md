@@ -13,3 +13,10 @@ Trims a video, starting at four seconds, then keeps the next ten seconds.
 # Making animated gifs
 
 [Animated gifs](animated-gifs.md)
+
+# Adding audio from a wav file to a video
+
+    ffmpeg -i cat-chase.mov -i ~/Music/yakety-sax-6s.wav -c:v copy -c:a aac -shortest -map 0:v:0 -map 1:a:0 cat-chase.mp4
+  
+ `-shortest ` tells it to make the output as long as the shortest of the two inputs. `-map 0:v:0` tells it to use the video from the first input in the first (only output) and `-map 1:a:0` tells it to use the audio from the second (1-indexed) input in the output.
+ 
