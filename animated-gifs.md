@@ -16,6 +16,7 @@
 - Resize your images to a reasonable size.
   - e.g. `convert -resize 1024x1024 steak1.jpg steak1.jpg`
   - Or `convert -resize 25% steak1.jpg steak1.jpg`
+  - Or crop with: `convert -crop 640x480+200+100 steak1.jpg steak1.jpg`
 - Combine them into an animated gif.
   - `convert -loop 0 -delay 100 steak*.jpg grill-rotation.gif`
     - This will put a 1-second delay in between frames. 
