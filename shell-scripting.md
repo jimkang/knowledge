@@ -25,3 +25,13 @@ Here is a script that replaces all instances of `__PLACEHOLDER__` with `replacem
     echo "$cleaned"
 
     sed -i '' "s/__PLACEHOLDER__/$cleaned/g" test.html
+
+# Getting parts of file paths
+
+    for file in ${src}/*.jpg
+      do
+        basename="${file##*/}"
+        echo $basename
+      done
+      
+The above will print the filename.extension part of the paths.
