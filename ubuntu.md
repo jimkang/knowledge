@@ -42,3 +42,9 @@ You can switch between tabs with alt+[tab number]. I don't know of a quick way t
 - Copy process list somewhere
 - `reboot`
 - Log back in and make sure old processes are still up.
+
+## Typing special characters
+
+- You set up a [Compose key](https://en.wikipedia.org/wiki/Compose_key#Compose_sequences) in Tweaks. Then, you can hit that key, followed by a sequence to type a special characters.
+- ° is: Compose, o, o
+- emdash — is: Compose, -, -, -
