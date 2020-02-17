@@ -27,4 +27,8 @@
   - Use `--exclude '<dir or file pattern>'` to skip directories you don't want to upload. For directory patterns, use a trailing slash.
   - Use `--acl-public` to make these files publicly readable via a browser.
   - There is no `-a` like there is in rsync.
-  
+
+### Copying a single file
+
+- `s3cmd put filename s3://bucket/dir/`
+  - `s3cmd cp` didn't seem to work for me.
