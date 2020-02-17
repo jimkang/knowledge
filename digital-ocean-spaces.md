@@ -25,3 +25,5 @@
   - You can use `—skip-existing` to avoid comparing existing files.
   - Use `--exclude '<dir or file pattern>'` to skip directories you don't want to upload. For directory patterns, use a trailing slash.
   - Use `--acl-public` to make these files publicly readable via a browser.
+  - There is no `-a` like there is in rsync.
+  
