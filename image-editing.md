@@ -10,3 +10,6 @@
 
      mogrify -resize 128x128\> -path source-images/resized source-images/*.png
      
+## Place all images in a directory into square canvasses, in-place
+
+     mogrify -gravity center -background transparent -extent 128x128 source-images/resized/*.png
