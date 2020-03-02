@@ -55,3 +55,19 @@ Changing the wifi password
 
 - Edit /etc/wpa_supplicant/wpa-supplicant.conf
 - Change the `psk` value under the `network` entry.
+
+### Getting a static ip on the WiFi
+
+The following steps from [Raspberry Pi static ip](https://pimylifeup.com/raspberry-pi-static-ip-address/) worked:
+
+- Get the router ip from `ip r | grep default` (It's the first ip listed.)
+- `cat /etc/resolv.conf` to get the nameserver ip.
+- Add this to `/etc/dhcpcd.conf`:
+
+      interface wlan0
+      static ip_address=<desired ip>/24
+      static routers=<router ip>
+      static domain_name_servers=<router ip> 8.8.8.8
+
+You can substitute an external DNS server ip in `domain_name_servers`.
+- `sudo reboot`
