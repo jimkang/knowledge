@@ -4,9 +4,9 @@
 
 ## Append images to an image, in vertical orientation (single column of images)
 
-     montage $(RESIZEDDIR)/*.png -tile 1x -background Transparent static/sheet.png
+     montage $(RESIZEDDIR)/*.png -tile 1x -background Transparent -geometry '1x1+0+0<' static/sheet.png
  
- You can do `x1` to create a row of images instead.
+ You can do `x1` to create a row of images instead. The `-geometry '1x1+0+0<'` [tells it to not resize and to not add padding](https://www.imagemagick.org/Usage/montage/#zero_geometry). And (I think) it tells it to retain the aspect ratio.
  
 ## Resize all images in a directory to a max dimension
 
