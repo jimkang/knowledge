@@ -1,10 +1,12 @@
 # Image editing
 
-`convert` and `mogrify` are from ImageMagick.
+`montage` and `mogrify` are from ImageMagick.
 
-## Append images to an image, in vertical orientation
+## Append images to an image, in vertical orientation (single column of images)
 
-     convert +append guys.png source-images/*.png guys.png
+     montage $(RESIZEDDIR)/*.png -tile 1x static/sheet.png
+ 
+ You can do `x1` to create a row of images instead.
  
 ## Resize all images in a directory to a max dimension
 
