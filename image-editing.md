@@ -4,7 +4,7 @@
 
 ## Append images to an image, in vertical orientation (single column of images)
 
-     montage $(RESIZEDDIR)/*.png -tile 1x static/sheet.png
+     montage $(RESIZEDDIR)/*.png -tile 1x -background Transparent static/sheet.png
  
  You can do `x1` to create a row of images instead.
  
