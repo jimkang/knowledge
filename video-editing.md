@@ -10,6 +10,10 @@ That crops a video to 900x900, starting at an upper left of 540,128. [More here.
 
 Trims a video, starting at four seconds, then keeps the next ten seconds.
 
+# Changing speed
+
+    ffmpeg -i crabbington-0.ogv -filter:v "setpts=0.5*PTS" crabbington-0-double-speed.ogv
+
 # Making animated gifs
 
 [Animated gifs](animated-gifs.md)
