@@ -9,7 +9,11 @@
   - `ffmpeg -i complete-graph-small.mp4 -vf fps=15,scale=500:-1:flags=lanczos,palettegen palette.png`
 - Use the palette to create the gif.
   - `ffmpeg -i complete-graph-small.mp4 -i palette.png -filter_complex "fps=15,scale=420:476:flags=lanczos[x];[x][1:v]paletteuse" -ignore_loop 0 complete-graph.gif`
-  - [ignore_loop tells ffmpeg to ignore the looping setting from the input video](https://stackoverflow.com/a/25556286/87798). By default, it will loop gifs infinitely, but videos usually say not to loop, so ffmpeg will respect that unless told otherwise. 
+  - [ignore_loop tells ffmpeg to ignore the looping setting from the input video](https://stackoverflow.com/a/25556286/87798). By default, it will loop gifs infinitely, but videos usually say not to loop, so ffmpeg will respect that unless told otherwise.
+
+### Making the animated gif play faster than the source video
+
+    ffmpeg -i crabbington-0.ogv -i palette.png -filter_complex "setpts=0.5*PTS,fps=15,scale=768:-1:flags=lanczos[x];[x][1:v]paletteuse" -ignore_loop 0 crabbington-preview.gif
 
 ## Creating an animated gif from images with ImageMagick
 
