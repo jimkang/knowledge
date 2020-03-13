@@ -8,4 +8,4 @@
 
 ## Stereo silence
 
-sox -n -r 48000 -c 2 Silence_250ms.wav trim 0.0 0.250
+    sox -n -r 48000 -c 2 Silence_250ms.wav trim 0.0 0.250
