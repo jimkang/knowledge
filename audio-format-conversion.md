@@ -34,6 +34,11 @@
 
     ffmpeg -i undefined.ogv -vn -acodec copy out.ogg
 
+# Decoding aac
+
+- Install [gstreamer](https://en.wikipedia.org/wiki/GStreamer): `sudo apt-get install gstreamer1.0-libav`
+- `ffmpeg -i file.m4a file.wav`
+
 # Converting mono to stereo
 
     #!/bin/bash
