@@ -38,3 +38,9 @@
   - `tar zxvf GeoLite2-City.tar.gz`
   - `cp GeoLite2-City_20181204/GeoLite2-City.mmdb /path/to/piwik/misc/`
   
+# Tracking non-bots
+
+Matomo, when you import logs with `--enable-bots`, will tag visits wit NOT-BOT or BOT, based on user agents that it knows are bots. In practice, that list is always behind. To modify your segment to exclude user agents that you think are bots:
+- Edit the segment from the website.
+- Add an OR condition.
+- Set it to `Browser`, `does not contain`,  and the browser you want to exclude, such as `UC Browser 11.7`.
