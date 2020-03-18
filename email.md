@@ -80,3 +80,36 @@ This .muttrc seems to work to get mail from Fastmail:
         macro pager c "<change-folder>?<toggle-mailboxes>" "open a different folder"
 
 The key for me was getting the full email in there, including `@fastmail.com`.
+
+However, this doesn't download the mail locally. For that, we can use offlineimap. After following the instructions for [installation via distribution](http://www.offlineimap.org/doc/installation.html#distribution), you need to install a missing dependency:
+
+        pip install rfc6555
+
+Then, move the directory to `/usr/local/bin`.
+Create an rc file:
+
+        cp /usr/local/bin/offlineimap/offlineimap.conf.minimal ~/.offlineimaprc
+
+Make it look like this:
+
+        [general]
+        accounts = youraccount
+
+        [Account youraccount]
+        localrepository = Local
+        remoterepository = Remote
+
+        [Repository Local]
+        type = Maildir
+        localfolders = /mnt/storage/archives/mail/
+
+        [Repository Remote]
+        type = IMAP
+        remotehost = imap.fastmail.com
+        remoteuser = youremailaddress@fastmail.com
+        sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+Without sslcacertfile, you'll get this error:
+
+        ERROR: No CA certificates and no server fingerprints configured.  You must configure at least something, otherwise having SSL helps nothing.
+       
