@@ -56,3 +56,27 @@ To set up mutt as an email backer-upper from an IMAP source:
 
 First, [create a maildir](https://gitlab.com/muttmua/mutt/-/wikis/MaildirFormat). Create `cur`, `new`, and `tmp` subdirectories in your chosen maildir.
 
+This .muttrc seems to work to get mail from Fastmail:
+
+        set mbox_type=Maildir
+
+        set spoolfile="imaps://<username>@fastmail.com:<app password>@imap.fastmail.com"
+        set folder="/mnt/storage/archives/mail/"
+        set mask=".*"    # the default mask hides dotfiles and maildirs are dotfiles now.
+        # set mask="!^\.[^.]"  # this line intentionally commented out
+        set record="+.Sent"
+        set postponed="+.Drafts"
+
+        mailboxes ! + `\
+        for file in /mnt/storage/archives/mail/.*; do \
+          box=$(basename "$file"); \
+          if [ ! "$box" = '.' -a ! "$box" = '..' -a ! "$box" = '.customflags' \
+              -a ! "$box" = '.subscriptions' ]; then \
+            echo -n "\"+$box\" "; \
+          fi; \
+        done`
+
+        macro index c "<change-folder>?<toggle-mailboxes>" "open a different folder"
+        macro pager c "<change-folder>?<toggle-mailboxes>" "open a different folder"
+
+The key for me was getting the full email in there, including `@fastmail.com`.
