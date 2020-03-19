@@ -52,36 +52,13 @@ However, by setting the "mod" checkbox for each user, they can be disallowed fro
 
 # Mutt as archiver
 
-To set up mutt as an email backer-upper from an IMAP source:
+To set up offlineimap and mutt as an email backer-upper from an IMAP source, you do the following.
+
+## offlineimap
 
 First, [create a maildir](https://gitlab.com/muttmua/mutt/-/wikis/MaildirFormat). Create `cur`, `new`, and `tmp` subdirectories in your chosen maildir.
 
-This .muttrc seems to work to get mail from Fastmail:
-
-        set mbox_type=Maildir
-
-        set spoolfile="imaps://<username>@fastmail.com:<app password>@imap.fastmail.com"
-        set folder="/mnt/storage/archives/mail/"
-        set mask=".*"    # the default mask hides dotfiles and maildirs are dotfiles now.
-        # set mask="!^\.[^.]"  # this line intentionally commented out
-        set record="+.Sent"
-        set postponed="+.Drafts"
-
-        mailboxes ! + `\
-        for file in /mnt/storage/archives/mail/.*; do \
-          box=$(basename "$file"); \
-          if [ ! "$box" = '.' -a ! "$box" = '..' -a ! "$box" = '.customflags' \
-              -a ! "$box" = '.subscriptions' ]; then \
-            echo -n "\"+$box\" "; \
-          fi; \
-        done`
-
-        macro index c "<change-folder>?<toggle-mailboxes>" "open a different folder"
-        macro pager c "<change-folder>?<toggle-mailboxes>" "open a different folder"
-
-The key for me was getting the full email in there, including `@fastmail.com`.
-
-However, this doesn't download the mail locally. For that, we can use offlineimap. After following the instructions for [installation via distribution](http://www.offlineimap.org/doc/installation.html#distribution), you need to install a missing dependency:
+After following the instructions for [offline imap installation via distribution](http://www.offlineimap.org/doc/installation.html#distribution), you need to install a missing dependency:
 
         pip install rfc6555
 
@@ -107,9 +84,36 @@ Make it look like this:
         type = IMAP
         remotehost = imap.fastmail.com
         remoteuser = youremailaddress@fastmail.com
+        remotepass = apppassword
         sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 
 Without sslcacertfile, you'll get this error:
 
         ERROR: No CA certificates and no server fingerprints configured.  You must configure at least something, otherwise having SSL helps nothing.
        
+## Mutt
+
+Install mutt via apt-get. Then, create this `.muttrc` to read from the directory that `offlineimap` downloads to.
+
+        set mbox_type=Maildir
+
+        set spoolfile="/mnt/storage/archives/mail/INBOX"
+        set folder="/mnt/storage/archives/mail/"
+        set mask=".*"    # the default mask hides dotfiles and maildirs are dotfiles now.
+        # set mask="!^\.[^.]"  # this line intentionally commented out
+        set record="+.Sent"
+        set postponed="+.Drafts"
+
+        mailboxes ! + `\
+        for file in /mnt/storage/archives/mail/.*; do \
+          box=$(basename "$file"); \
+          if [ ! "$box" = '.' -a ! "$box" = '..' -a ! "$box" = '.customflags' \
+              -a ! "$box" = '.subscriptions' ]; then \
+            echo -n "\"+$box\" "; \
+          fi; \
+        done`
+
+        macro index c "<change-folder>?<toggle-mailboxes>" "open a different folder"
+        macro pager c "<change-folder>?<toggle-mailboxes>" "open a different folder"
+
+Now, when you run `mutt` you can read the downloaded mail.
