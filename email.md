@@ -50,7 +50,7 @@ However, by setting the "mod" checkbox for each user, they can be disallowed fro
 - `vacation -l` lists all of the emails it responded to and when.
 - Does not give you control over whether you reply to the Reply-To or From fields of an incoming message.
 
-# Mutt as archiver
+# Archiving your mail locally
 
 To set up offlineimap and mutt as an email backer-upper from an IMAP source, you do the following.
 
@@ -117,3 +117,14 @@ Install mutt via apt-get. Then, create this `.muttrc` to read from the directory
         macro pager c "<change-folder>?<toggle-mailboxes>" "open a different folder"
 
 Now, when you run `mutt` you can read the downloaded mail.
+
+## notmuch
+
+If you want to be able to easily search the full text of your mail, install notmuch with:
+
+        sudo apt-get install notmuch
+
+Run `notmuch`, then point it to your maildir when asked. Then, run `notmuch new` to index your mail. Also, add it to a cron job.
+
+Once installed, you can search with `notmuch search <body text>` or `notmuch search from:"<whoever>"`, etc. You can show the threads it lists with `notmuch show threadid`. There is some mutt integration, but I couldn't get it to work.
+
