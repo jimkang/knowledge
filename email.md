@@ -104,19 +104,7 @@ Install mutt via apt-get. Then, create this `.muttrc` to read from the directory
         set record="+.Sent"
         set postponed="+.Drafts"
 
-        mailboxes ! + `\
-        for file in /mnt/storage/archives/mail/.*; do \
-          box=$(basename "$file"); \
-          if [ ! "$box" = '.' -a ! "$box" = '..' -a ! "$box" = '.customflags' \
-              -a ! "$box" = '.subscriptions' ]; then \
-            echo -n "\"+$box\" "; \
-          fi; \
-        done`
-
-        macro index c "<change-folder>?<toggle-mailboxes>" "open a different folder"
-        macro pager c "<change-folder>?<toggle-mailboxes>" "open a different folder"
-
-Now, when you run `mutt` you can read the downloaded mail.
+Now, when you run `mutt` you can read the downloaded mail. offlineimap creates separate Maildirs for each folder in Fastmail, so you have to hit `c` then pick the folder (e.g. 'Sent' or 'Archive') to see messages in that are not in 'INBOX'.
 
 ## notmuch
 
