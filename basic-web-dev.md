@@ -13,3 +13,5 @@ Key points:
 - window.pageX and window.pageY are nice in that they're not affected by scrolling the way that clientRects are. (e.g. When the user scrolls, `window.pageY - the last window.page Y value` is accurate without having to add any scroll properties as you need to do with clientRects.)
 - You want to listen to mouseup/touchend and mousemove/touchmove events globally if you're using them for the purposes of figuring out when a drag ended and where it's going, not on the draggable element itself.
 - Style properties come back from the DOM API as strings, with units on them, no less. You need to be careful when doing math with them. And when you set style properties, your values will be quietly rejected if they don't have units.
+
+[Mobile edit test](animated-gifs.md)
